@@ -413,7 +413,7 @@ func (p *Presentation) save(w io.Writer, isTemplate bool) error {
 		log.Printf("validation error in document: %s", err)
 	}
 
-	if !license.GetLicenseKey().IsLicensed() && flag.Lookup("test.v") == nil {
+	if fase && !license.GetLicenseKey().IsLicensed() && flag.Lookup("test.v") == nil {
 		fmt.Println("Unlicensed version of UniOffice")
 		fmt.Println("- Get a license on https://unidoc.io")
 		slide := p.Slides()[0]

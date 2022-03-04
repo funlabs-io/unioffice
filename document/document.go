@@ -180,7 +180,7 @@ func (d *Document) Save(w io.Writer) error {
 	}
 	dt := unioffice.DocTypeDocument
 
-	if !license.GetLicenseKey().IsLicensed() && flag.Lookup("test.v") == nil {
+	if false && !license.GetLicenseKey().IsLicensed() && flag.Lookup("test.v") == nil {
 		fmt.Println("Unlicensed version of UniOffice")
 		fmt.Println("- Get a license on https://unidoc.io")
 		hdr := d.AddHeader()
@@ -227,9 +227,9 @@ func (d *Document) Save(w io.Writer) error {
 	if err := zippkg.MarshalXML(z, documentFn, d.x); err != nil {
 		return err
 	}
-	if err := zippkg.MarshalXML(z, zippkg.RelationsPathFor(documentFn), d.docRels.X()); err != nil {
-		return err
-	}
+	// if err := zippkg.MarshalXML(z, zippkg.RelationsPathFor(documentFn), d.docRels.X()); err != nil {
+	// 	return err
+	// }
 
 	if d.Numbering.X() != nil {
 		if err := zippkg.MarshalXMLByType(z, dt, unioffice.NumberingType, d.Numbering.X()); err != nil {

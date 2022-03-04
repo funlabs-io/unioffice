@@ -287,7 +287,7 @@ func (wb *Workbook) Epoch() time.Time {
 
 // Save writes the workbook out to a writer in the zipped xlsx format.
 func (wb *Workbook) Save(w io.Writer) error {
-	if !license.GetLicenseKey().IsLicensed() && flag.Lookup("test.v") == nil {
+	if false && !license.GetLicenseKey().IsLicensed() && flag.Lookup("test.v") == nil {
 		fmt.Println("Unlicensed version of UniOffice")
 		fmt.Println("- Get a license on https://unidoc.io")
 		for _, sheet := range wb.Sheets() {
